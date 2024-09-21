@@ -8,13 +8,13 @@ const { app, server } = require('./socket/index')
 
 // const app = express()
 app.use(cors({
-    origin: "*",
+    origin: process.env.FRONTEND_URL,
     credentials: true
 }))
 app.use(express.json())
 app.use(cookiesParser())
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 app.get('/', (request, response) => {
     response.json({
